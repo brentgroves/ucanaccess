@@ -27,14 +27,16 @@ public class HelloWorld {
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
- 
+//    java -Xmx1024m com.mycompany.MyClass
+        // https://plumbr.io/outofmemoryerror/java-heap-space 
         // Step 2: Opening database connection
         try {
  
-            String msAccDB = "/home/brent/src/Northwind.MDB";
+            String msAccDB = "/home/brent/src/sps.mdb";
+//            String msAccDB = "/home/brent/src/Northwind.MDB";
             String dbURL = "jdbc:ucanaccess://"
                     + msAccDB; 
-	    int result;
+           int result;
  
             // Step 2.A: Create and 
             // get connection using DriverManager class
@@ -45,7 +47,8 @@ public class HelloWorld {
  
             // Step 2.C: Executing SQL and 
             // retrieve data into ResultSet
-	    result = statement.executeUpdate("UPDATE Customers SET ContactName = 'sammy' WHERE CustomerID = '1'");	    
+//	    result = statement.executeUpdate("UPDATE Customers SET ContactName = 'sammy' WHERE CustomerID = '1'");	    
+            result = statement.executeUpdate("UPDATE `Items` SET descr = '4C12H-TEST3' WHERE ITEMNUMBER = '0000066'");      
 //            resultSet = statement.executeQuery("SELECT * FROM customers");
  
             System.out.println("ID\tName\t\t\tAge\tMatches");
